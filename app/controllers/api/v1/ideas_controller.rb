@@ -4,10 +4,14 @@ def create
   respond_with :api, :v1, Idea.create(idea_params)
 end
 
+def destroy
+  respond_with Idea.destroy(params[:id])
+end
+
 private
 
 def idea_params
-  params.require(:idea).permit(:title, :description, :quality)
+  params.require(:idea).permit(:title, :body, :quality)
 end
 
 end
