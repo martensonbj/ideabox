@@ -1,0 +1,42 @@
+<div class="ui container">
+  <div class="ui inverted segment">
+    <div class="ui inverted form center aligned segment">
+      <div class="two fields">
+
+        <div class="ui form">
+          <div class="field">
+            <label>Idea</label>
+            <input placeholder="Idea" type="text" id="idea-title">
+          </div>
+
+          <div class="field">
+            <label>Body</label>
+            <textarea placeholder="Details go here!" rows="2" id="idea-body"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Quality</label>
+            <select class="ui simple dropdown item" id="idea-quality">
+              <option value="0">Genius</option>
+              <option value="1">Plausible</option>
+              <option value="2">Swill</option>
+            </select>
+          </div>
+        </div><!--form-->
+
+      </div>
+      <div class="ui submit button" id="save-idea">Save Idea</div>
+    </div>
+  </div>
+</div>
+
+<div class="" id="new-ideas">
+
+</div>
+
+<script>
+$(document).ready(function(){
+  $('select.dropdown')
+  .dropdown();
+});
+</script>

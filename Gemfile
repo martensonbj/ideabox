@@ -9,6 +9,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pg'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'responders'
+
 group :development, :test do
   gem 'byebug'
   gem 'pry'

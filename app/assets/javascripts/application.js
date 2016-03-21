@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap-sprockets
+
+// Loads all Semantic javascripts
+//= require semantic-ui
