@@ -15,7 +15,6 @@ var bodyText = function getIdeaBody(){
 
 function saveIdea(){
   $("#save-idea").on('click', function(){
-    console.log(bodyText)
     var ideaParams = {
       idea: {
         title: $("#idea-title").val(),
@@ -55,7 +54,7 @@ function renderIdea(idea){
    idea.body +
    " </div><div class='quality idea-element'><p> " +
    cappedQuality +
-   " </p><span><i class='large thumbs down icon decrease-quality'></i><i class='large thumbs up icon increase-quality'></i></span></div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div></div></div>")
+   " </p><span><i class='large thumbs down icon decrease-quality'></i><i class='large thumbs up icon increase-quality'></i></span></div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div><div name='button-edit' class='edit-idea-modal ui button' tabindex='0'>Edit</div></div></div>")
 
    increaseQuality(newIdea).prependTo($('#ideas-list'));
    decreaseQuality(newIdea).prependTo($('#ideas-list'));

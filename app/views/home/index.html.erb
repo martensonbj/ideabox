@@ -2,8 +2,11 @@
 
   <h1 class = "blue center aligned">Idea Bucket</h1>
 
-  <div class="ui grid idea-container">
+  <div class="filter">
+    <input type="text" name="search-ideas" id="search-ideas" placeholder="search ideas">
+  </div>
 
+  <div class="ui grid idea-container">
     <div class="ui two wide column"></div>
 
     <div class="ui inverted segment seven wide column" id="idea-form">
@@ -29,17 +32,10 @@
 
     <div class="ui relaxed 2 wide column"></div>
 
-      <div class="ui relaxed divided list seven wide column" id="ideas-list">
-      </div>
-
+    <div class="ui relaxed divided list seven wide column" id="ideas-list">
     </div>
 
-  </div><!--grid--->
-</div> <!--container-->
+    <%= render partial: 'edit_modal' %>
 
-<script>
-$(document).ready(function(){
-  $('select.dropdown')
-  .dropdown();
-});
-</script>
+  </div><!--grid-->
+</div> <!--container-->

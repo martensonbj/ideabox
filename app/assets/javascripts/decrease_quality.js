@@ -25,11 +25,9 @@ function decreaseQuality($idea){
       success: function(){
         quality = newQuality[0].toUpperCase() + newQuality.slice(1)
         $idea.find('.quality').find('p').html(quality)
-        console.log("Updated Quality to: " + newQuality)
       },
       error: function(xhr){
-        console.log("Error in thumbs up")
-        console.log(xhr.responseText)
+        console.log("Error in thumbs up", xhr.responseText)
       }
     })
   }).end();
