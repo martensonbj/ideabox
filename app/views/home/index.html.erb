@@ -1,6 +1,6 @@
 <div class="ui container">
 
-  <h1 class = "blue center aligned">IdeaBox</h1>
+  <h1 class = "blue center aligned">Idea Bucket</h1>
 
   <div class="ui grid idea-container">
 
@@ -29,26 +29,10 @@
 
     <div class="ui relaxed 2 wide column"></div>
 
-    <% if @ideas %>
-    <div class="ui relaxed divided list seven wide column" id="ideas-list">
-      <% @ideas.each do |idea| %>
-      <div class="item">
-
-        <div class="content" data-id = "<%= idea.id %>" >
-          <h4 class="title idea-element"> <i class="large idea middle aligned icon"></i> <%= idea.title %> </h4>
-          <div class="body idea-element"><%= idea.body %> </div>
-          <div class="quality idea-element"><span class="quality-span"><%= idea.quality.capitalize %></span>
-            <span class="thumbs">
-            <i class="large thumbs down icon decrease-quality"></i>
-            <i class="large thumbs up icon increase-quality"></i>
-            </span>
-          </div>
-          <div name='button-delete' class='delete-idea ui button' tabindex="0">Delete</div>
-        </div>
+      <div class="ui relaxed divided list seven wide column" id="ideas-list">
       </div>
-      <% end %>
+
     </div>
-    <% end %>
 
   </div><!--grid--->
 </div> <!--container-->
