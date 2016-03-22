@@ -1,8 +1,4 @@
-$(document).ajaxSuccess(function(){
-  increaseQuality();
-});
-
-function setNewQuality(status) {
+function setIncreasedQuality(status) {
   if (status === "swill") {
     return "plausible"
   } else {
@@ -10,13 +6,12 @@ function setNewQuality(status) {
   }
 }
 
-function increaseQuality(){
-  $('.increase-quality').on('click', function() {
+function increaseQuality($idea){
+  return $idea.find('.increase-quality').on('click', function() {
     var $idea = $(this).closest('.content')
     var currentQuality = $idea.find('.quality').text().toLowerCase()
-    currentQuality = currentQuality.replace(/\s+/g, '');
-    var newQuality = setNewQuality(currentQuality)
-    console.log("current " + currentQuality + " new: " + newQuality)
+        currentQuality = currentQuality.replace(/\s+/g, '');
+    var newQuality = setIncreasedQuality(currentQuality)
     var ideaParams = {
       idea: {
         quality: newQuality
@@ -37,5 +32,5 @@ function increaseQuality(){
         console.log(xhr.responseText)
       }
     })
-  });
+  }).end();
 }

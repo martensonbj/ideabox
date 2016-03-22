@@ -46,15 +46,17 @@ function saveIdea(){
 function renderIdea(idea){
   console.log("in render idea:" + idea)
   var cappedQuality = idea.quality[0].toUpperCase() + idea.quality.slice(1)
-  $('#ideas-list').prepend(
-    "<div class='item'><div class='content' data-id='" +
-    idea.id +
-    "'> <h4 class='title'><i class='large idea middle aligned icon'></i> " +
-    idea.title +
-    "</h4><div class='body idea-element'> " +
-     idea.body +
-     " </div><div class='quality idea-element'><p> " +
-     cappedQuality +
-     " </p><span><i class='large thumbs down icon decrease-quality'></i><i class='large thumbs up icon increase-quality'></i></span></div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div></div></div>"
-  );
+
+  var newIdea = $("<div class='item'><div class='content' data-id='" +
+  idea.id +
+  "'> <h4 class='title'><i class='large idea middle aligned icon'></i> " +
+  idea.title +
+  "</h4><div class='body idea-element'> " +
+   idea.body +
+   " </div><div class='quality idea-element'><p> " +
+   cappedQuality +
+   " </p><span><i class='large thumbs down icon decrease-quality'></i><i class='large thumbs up icon increase-quality'></i></span></div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div></div></div>")
+
+   increaseQuality(newIdea).prependTo($('#ideas-list'));
+   decreaseQuality(newIdea).prependTo($('#ideas-list'));
 }

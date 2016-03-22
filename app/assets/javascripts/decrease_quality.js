@@ -1,7 +1,3 @@
-$(document).ajaxSuccess(function(){
-  decreaseQuality();
-});
-
 function setDecreasedQuality(status) {
   if (status === "genius") {
     return "plausible"
@@ -10,13 +6,12 @@ function setDecreasedQuality(status) {
   }
 }
 
-function decreaseQuality(){
-  $('.decrease-quality').on('click', function() {
+function decreaseQuality($idea){
+  return $idea.find('.decrease-quality').on('click', function() {
     var $idea = $(this).closest('.content')
     var currentQuality = $idea.find('.quality').text().toLowerCase()
-    currentQuality = currentQuality.replace(/\s+/g, '');
+        currentQuality = currentQuality.replace(/\s+/g, '');
     var newQuality = setDecreasedQuality(currentQuality)
-    console.log("current " + currentQuality + " new: " + newQuality)
     var ideaParams = {
       idea: {
         quality: newQuality
@@ -37,5 +32,5 @@ function decreaseQuality(){
         console.log(xhr.responseText)
       }
     })
-  });
+  }).end();
 }
