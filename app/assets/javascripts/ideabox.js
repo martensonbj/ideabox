@@ -1,6 +1,8 @@
 $(document).ready(function() {
   saveIdea();
   deleteIdea();
+  increaseQuality();
+  // decreaseQuality();
 });
 
 var bodyText = function getIdeaBody(){
@@ -9,7 +11,9 @@ var bodyText = function getIdeaBody(){
   var words = input.split(' ');
   if (words.length > maxLength) {
     return words.slice(0, maxLength).join(' ');
-  };
+  } else {
+    return words.join(' ');
+  }
 }
 
 function saveIdea(){
@@ -44,15 +48,15 @@ function saveIdea(){
 
 function renderIdea(idea){
   $('#ideas-list').prepend(
-    "<div class='item'> <i class='large idea mi ddle aligned icon'></i> <div class='content' data-id='" +
+    "<div class='item'><div class='content' data-id='" +
     idea.id +
-    "'> <h4 class='title'> " +
+    "'> <h4 class='title'><i class='large idea middle aligned icon'></i> " +
     idea.title +
-    "</h4><div class='body'> " +
+    "</h4><div class='body idea-element'> " +
      idea.body +
-     " </div><div class='quality'> " +
+     " </div><div class='quality idea-element'><span class='quality-span'> " +
      idea.quality +
-     " </div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div></div></div>"
+     " </span><span class='thumbs'><i class='large thumbs down icon decrease-quality'></i><i class='large thumbs up icon increase-quality'></i></span></div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div></div></div>"
   );
 }
 
@@ -61,8 +65,7 @@ function deleteIdea() {
     var $idea = $(this).closest('.content')
     $.ajax({
       type: "DELETE",
-      url: "api/v1/ideas/" +
-      $idea.attr("data-id") + ".json",
+      url: "api/v1/ideas/" + $idea.attr("data-id") + ".json",
       success: function() {
         $idea.parent().remove()
       },
@@ -71,5 +74,41 @@ function deleteIdea() {
         console.log(xhr.responseText)
       }
     });
+  });
+}
+
+function setIncreasedQuality(quality){
+  if (quality === 2){
+    return "plausible"
+  } else  {
+    return "genius"
+  }
+}
+
+function increaseQuality(){
+  $('.increase-quality').on('click', function(){
+    var $idea = $(this).closest('.content')
+    var $currentQuality = $(this).closest('.content span').html();
+    var newQuality = setIncreasedQuality($currentQuality)
+    console.log("quality: " + $currentQuality)
+    var ideaParams = {
+      idea: {
+        quality: newQuality
+      }
+    }
+
+    $.ajax({
+      type: "PUT",
+      url: "api/v1/ideas/" + $idea.attr("data-id") + ".json",
+      data: ideaParams,
+      success: function(){
+        $(this).closest('.content span').html(newQuality)
+        console.log("Updated Quality to: " + newQuality)
+      },
+      error: function(xhr){
+        console.log("Error in thumbs up")
+        console.log(xhr.responseText)
+      }
+    })
   });
 }

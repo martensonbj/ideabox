@@ -2,7 +2,10 @@
 
   <h1 class = "blue center aligned">IdeaBox</h1>
 
-  <div class="ui grid">
+  <div class="ui grid idea-container">
+
+    <div class="ui two wide column"></div>
+
     <div class="ui inverted segment seven wide column" id="idea-form">
       <div class="ui inverted form">
         <div class="two fields">
@@ -17,15 +20,6 @@
               <label>Body</label>
               <textarea placeholder="Details go here!" rows="2" id="idea-body"></textarea>
             </div>
-
-            <div class="field">
-              <label>Quality</label>
-              <select class="ui simple dropdown item" id="idea-quality">
-                <option value="genius">Genius</option>
-                <option value="plausible">Plausible</option>
-                <option selected="selected" value="swill">Swill</option>
-              </select>
-            </div>
           </div><!--form-->
 
         </div>
@@ -33,24 +27,28 @@
       </div>
     </div>
 
-    <div class="ui relaxed 2 wide column">
-    </div>
+    <div class="ui relaxed 2 wide column"></div>
 
+    <% if @ideas %>
     <div class="ui relaxed divided list seven wide column" id="ideas-list">
-      <% if @ideas %>
       <% @ideas.each do |idea| %>
       <div class="item">
-        <i class="large idea middle aligned icon"></i>
+
         <div class="content" data-id = "<%= idea.id %>" >
-          <h4 class="title"> <%= idea.title %> </h4>
-          <div class="body"> <%= idea.body %> </div>
-          <div class="quality"> <%= idea.quality %> </div>
+          <h4 class="title idea-element"> <i class="large idea middle aligned icon"></i> <%= idea.title %> </h4>
+          <div class="body idea-element"><%= idea.body %> </div>
+          <div class="quality idea-element"><span class="quality-span"><%= idea.quality.capitalize %></span>
+            <span class="thumbs">
+            <i class="large thumbs down icon decrease-quality"></i>
+            <i class="large thumbs up icon increase-quality"></i>
+            </span>
+          </div>
           <div name='button-delete' class='delete-idea ui button' tabindex="0">Delete</div>
         </div>
       </div>
       <% end %>
-      <% end %>
     </div>
+    <% end %>
 
   </div><!--grid--->
 </div> <!--container-->
