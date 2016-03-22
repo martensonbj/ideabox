@@ -1,22 +1,22 @@
-$(document).ready(function() {
+$(document).ajaxSuccess(function(){
   increaseQuality();
-  // decreaseQuality();
 });
 
-function setIncreasedQuality(quality){
-  if (quality === "swill"){
+function setNewQuality(status) {
+  if (status === "swill") {
     return "plausible"
-  } else  {
+  } else {
     return "genius"
   }
 }
 
 function increaseQuality(){
-  $('.increase-quality').on('click', function(){
+  $('.increase-quality').on('click', function() {
     var $idea = $(this).closest('.content')
-    var currentQuality = $(this).parent().parent().find('p').html().toLowerCase()
-    console.log("currentQuality: " + currentQuality)
-    var newQuality = setIncreasedQuality(currentQuality)
+    var currentQuality = $idea.find('.quality').text().toLowerCase()
+    currentQuality = currentQuality.replace(/\s+/g, '');
+    var newQuality = setNewQuality(currentQuality)
+    console.log("current " + currentQuality + " new: " + newQuality)
     var ideaParams = {
       idea: {
         quality: newQuality
@@ -28,7 +28,8 @@ function increaseQuality(){
       url: "api/v1/ideas/" + $idea.attr("data-id") + ".json",
       data: ideaParams,
       success: function(){
-        $(this).parent().parent().find('p').html(newQuality)
+        quality = newQuality[0].toUpperCase() + newQuality.slice(1)
+        $idea.find('.quality').find('p').html(quality)
         console.log("Updated Quality to: " + newQuality)
       },
       error: function(xhr){
