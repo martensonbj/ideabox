@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @ideas = Idea.all
+    @ideas = Idea.order(updated_at: :desc)
   end
 
 end

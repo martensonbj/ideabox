@@ -2,10 +2,8 @@ class CreateIdeas < ActiveRecord::Migration
   def change
     create_table :ideas do |t|
       t.string :title
-      t.string :description
-      t.string :quality
-
-      t.timestamps null: false
+      t.string :body
+      t.integer :quality
     end
   end
 end

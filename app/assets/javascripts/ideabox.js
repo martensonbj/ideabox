@@ -3,12 +3,22 @@ $(document).ready(function() {
   deleteIdea();
 });
 
+var bodyText = function getIdeaBody(){
+  var input = $("#idea-body").val()
+  var maxLength = 3;
+  var words = input.split(' ');
+  if (words.length > maxLength) {
+    return words.slice(0, maxLength).join(' ');
+  };
+}
+
 function saveIdea(){
   $("#save-idea").on('click', function(){
+    console.log(bodyText)
     var ideaParams = {
       idea: {
         title: $("#idea-title").val(),
-        body: $("#idea-body").val(),
+        body: bodyText,
         quality: $("#idea-quality").val()
       }
     }
@@ -26,16 +36,17 @@ function saveIdea(){
       }
     });
 
-    $("#idea-title").html("")
-    $("#idea-body").html("")
-    $("#idea-quality").html("")
+    $("#idea-title").val("")
+    $("#idea-body").val("")
+    $("#idea-quality").val("")
   });
 }
 
 function renderIdea(idea){
   $('#ideas-list').prepend(
-    "<div class='item' data-id='" +
-    idea.id + "'> <i class='large idea middle aligned icon'></i> <div class='content'> <h4 class='title'> " +
+    "<div class='item'> <i class='large idea mi ddle aligned icon'></i> <div class='content' data-id='" +
+    idea.id +
+    "'> <h4 class='title'> " +
     idea.title +
     "</h4><div class='body'> " +
      idea.body +
@@ -48,7 +59,6 @@ function renderIdea(idea){
 function deleteIdea() {
   $('#ideas-list').delegate('.delete-idea', 'click', function(){
     var $idea = $(this).closest('.content')
-    console.log('idea is:' + $idea)
     $.ajax({
       type: "DELETE",
       url: "api/v1/ideas/" +
