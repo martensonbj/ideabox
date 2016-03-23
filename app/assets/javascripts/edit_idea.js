@@ -44,23 +44,21 @@ $(document).ajaxSuccess(function(){
           body: editBodyText
         }
       }
-      console.log("ideaParams: " + ideaParams)
 
       $.ajax({
         type: "PUT",
-        url: "api/v1/ideas/" + $idea.attr("data-id") + ".json",
+        url: "api/v1/ideas/" + idea.attr("data-id") + ".json",
         data: ideaParams,
-        success: function(){
+        success: function(response){
+          debugger
           $('.modal').hide()
-          $('.')
+          idea.find('.title').text(newTitle)
+          idea.find('.body').text(editBodyText)
           console.log("IDEA UPDATED. New Title: " + newTitle + "newBody: " + editBodyText)
         },
         error: function(xhr){
           console.log("Error in edit", xhr.responseText)
         }
       });
-
-      $("#edit-sidea-title").val("")
-      $("#edit-sidea-body").val("")
     });
   }
