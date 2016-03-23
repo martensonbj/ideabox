@@ -43,7 +43,6 @@ function saveIdea(){
 }
 
 function renderIdea(idea){
-  console.log("in render idea:" + idea)
   var cappedQuality = idea.quality[0].toUpperCase() + idea.quality.slice(1)
 
   var newIdea = $("<div class='item'><div class='content' data-id='" +

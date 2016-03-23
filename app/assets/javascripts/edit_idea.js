@@ -1,4 +1,4 @@
-$(window).load(function(){
+$(document).ajaxSuccess(function(){
   toggleEditModal()
 });
 
@@ -7,6 +7,12 @@ $(window).load(function(){
       idea = $(this).closest('.content')
       console.log(idea)
       $('.modal').show()
+
+      var existingTitle = idea.find('.title').text()
+      var existingBody = idea.find('.body').text()
+
+      $('#edit-idea-body').val(existingBody)
+      $('#edit-idea-title').val(existingTitle)
       editIdea(idea)
     });
 
@@ -46,6 +52,7 @@ $(window).load(function(){
         data: ideaParams,
         success: function(){
           $('.modal').hide()
+          $('.')
           console.log("IDEA UPDATED. New Title: " + newTitle + "newBody: " + editBodyText)
         },
         error: function(xhr){
