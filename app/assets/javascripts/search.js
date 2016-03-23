@@ -1,4 +1,4 @@
-$(window).load(function(){
+$(document).ajaxSuccess(function(){
   var $ideas = $('.item');
 
   $('#search-ideas').on('keyup', function() {
