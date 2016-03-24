@@ -116,6 +116,11 @@ input, textarea {
   text-align: center;
 }
 
+.ui.form textarea {
+  width: 270px!important;
+  height: 150px!important;
+}
+
 input#search-ideas {
     width: 100%;
     font-size: 20px;
