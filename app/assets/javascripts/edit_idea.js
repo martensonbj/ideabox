@@ -24,7 +24,7 @@ $(document).ajaxSuccess(function(){
 
   var editBodyText = function getIdeaBody(){
     var input = $("#edit-idea-body").val()
-    var maxLength = 3;
+    var maxLength = 100;
     var words = input.split(' ');
     if (words.length > maxLength) {
       return words.slice(0, maxLength).join(' ');

@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 var bodyText = function getIdeaBody(){
   var input = $("#idea-body").val()
-  var maxLength = 3;
+  var maxLength = 100;
   var words = input.split(' ');
   if (words.length > maxLength) {
     return words.slice(0, maxLength).join(' ');
