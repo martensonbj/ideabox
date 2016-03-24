@@ -37,6 +37,7 @@ $(document).ajaxSuccess(function(){
     $("#edit-idea").on('click', function(){
       var $idea = idea
       var newTitle = $("#edit-idea-title").val()
+      var replaceTitle = "<i class='large idea middle aligned icon'></i> " + newTitle
       console.log("In editIDEA. idea: " + $idea)
       var ideaParams = {
         idea: {
@@ -52,9 +53,8 @@ $(document).ajaxSuccess(function(){
         success: function(response){
           debugger
           $('.modal').hide()
-          idea.find('.title').text(newTitle)
+          idea.find('h4').html(replaceTitle)
           idea.find('.body').text(editBodyText)
-          console.log("IDEA UPDATED. New Title: " + newTitle + "newBody: " + editBodyText)
         },
         error: function(xhr){
           console.log("Error in edit", xhr.responseText)

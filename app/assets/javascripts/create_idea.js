@@ -51,7 +51,7 @@ function renderIdea(idea){
   idea.title +
   "</h4><div class='body idea-element'> " +
    idea.body +
-   " </div><div class='quality idea-element'><p> " +
+   " </div><div class='quality-label'>QUALITY:</div><div class='quality idea-element'><p> " +
    cappedQuality +
    " </p><span><i class='large thumbs down icon decrease-quality'></i><i class='large thumbs up icon increase-quality'></i></span></div><div name='button-delete' class='delete-idea ui button' tabindex='0'>Delete</div><div name='button-edit' class='edit-idea-modal ui button' tabindex='0'>Edit</div></div></div>")
 
