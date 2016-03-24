@@ -22,25 +22,29 @@ function saveIdea(){
         quality: $("#idea-quality").val()
       }
     }
-
-    $.ajax({
-      type: "POST",
-      url: "api/v1/ideas",
-      data: ideaParams,
-      success: function(newIdea){
-        renderIdea(newIdea)
-      },
-      error: function(xhr) {
-        console.log("Something F'ed Up")
-        console.log(xhr.responseText)
-      }
-    });
-
-    $("#idea-title").val("")
-    $("#idea-body").val("")
-    $("#idea-quality").val("")
+    sendNewAjax(ideaParams)
   });
 }
+
+function sendNewAjax(ideaParams){
+  $.ajax({
+    type: "POST",
+    url: "api/v1/ideas",
+    data: ideaParams,
+    success: function(newIdea){
+      renderIdea(newIdea)
+    },
+    error: function(xhr) {
+      console.log("Something F'ed Up")
+      console.log(xhr.responseText)
+    }
+  });
+
+  $("#idea-title").val("")
+  $("#idea-body").val("")
+  $("#idea-quality").val("")
+};
+
 
 function renderIdea(idea){
   var cappedQuality = idea.quality[0].toUpperCase() + idea.quality.slice(1)

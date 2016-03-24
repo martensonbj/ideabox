@@ -2,13 +2,7 @@
 
   <h1 class = "blue center aligned">Idea Bucket</h1>
 
-  <div class="filter">
-    <input type="text" name="search-ideas" id="search-ideas" placeholder="search ideas">
-  </div>
-
-  <div class="ui submit button" id="sort-ideas">
-    Sort By Quality
-  </div>
+  <%= render partial: 'filters' %>
 
   <div class="ui grid idea-container">
     <div class="ui two wide column"></div>
