@@ -1,0 +1,48 @@
+# Ideabox 2.0 Submission Form
+[Project Spec](https://github.com/turingschool/curriculum/blob/master/source/projects/revenge_of_idea_box.markdown)
+
+------
+
+### [Github Repository](https://github.com/martensonbj/ideabox)
+
+### [Deployed Application](http://idea-bucket.herokuapp.com/)
+
+### [Github Commits](https://github.com/martensonbj/ideabox/commits/master)
+
+### Provide a Screenshot of your Application
+![Imgur](http://i.imgur.com/ZHTW0c2.png?1)
+
+## Completion
+
+### Completion of base functionality
+Base functionality is complete.
+
+### Which extensions, if any, did you complete?
+Sorting works but only when you reload the page and only in one direction.
+
+### Attach a .gif, or images of any extensions work being used on the site.
+![RecordIt](http://g.recordit.co/e45OLJPcq9.gif)
+# Code Quality
+
+### Link to a specific block of your code on Github that you are proud of
+[Filter Functionality](https://github.com/martensonbj/ideabox/blob/master/app/assets/javascripts/search.js#L1-L19)
+This was a really satisfying piece of functionality to complete. It helped me get a better understanding of how to manipulate jQuery objects and I was able to apply what I learned to other parts of the app.
+
+![RecordIt](http://g.recordit.co/9r4PxjaTeN.gif)
+
+### Link to a specific block of your code on Github that you feel not great about
+[Quality Change](https://github.com/martensonbj/ideabox/blob/master/app/assets/javascripts/increase_quality.js#L1-L7)
+  I'm trying to make an effort to avoid if-else statements. This was a particularly challenging piece of the project and I would benefit from spending more time refactoring how this is implemented.
+
+### Attach a screenshot or paste the output from your terminal of the result of your test-suite running.
+
+`$ rspec
+............
+Finished in 14.19 seconds (files took 3.27 seconds to load)
+12 examples, 0 failures`
+
+### Provide a link to an example, if you have one, of a test that covers an 'edge case' or 'unhappy path'
+[Model Validations](https://github.com/martensonbj/ideabox/blob/master/spec/models/idea_spec.rb#L15-L25)
+An idea isn't very useful without a title and a description. This test makes sure ideas aren't created without those attributes.
+
+-----

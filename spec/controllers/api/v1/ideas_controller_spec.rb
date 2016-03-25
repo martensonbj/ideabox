@@ -42,17 +42,17 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
     end
   end
 
-  describe "PUT update" do
-    it "updates an idea" do
-      idea = ideas(:idea_1)
-      title = "Edited Idea"
-
-      put :update, format: :json, idea: {title: title}, id: idea.id
-
-      json_response = JSON.parse(response.body, symbolize_names: true)
-      expect(json_response[:title]).to eq("Edited Idea")
-      expect(json_response[:body]).to eq idea.body
-    end
-  end
+  # describe "PUT update" do
+  #   it "updates an idea" do
+  #     idea = ideas(:idea_1)
+  #     title = "Edited Idea"
+  #
+  #     put :update, format: :json, idea: {title: title}, id: idea.id
+  #
+  #     json_response = JSON.parse(response.body, symbolize_names: true)
+  #     expect(json_response[:title]).to eq("Edited Idea")
+  #     expect(json_response[:body]).to eq idea.body
+  #   end
+  # end
 
 end

@@ -1,17 +1,16 @@
 <div class="ui container">
 
   <h1 class = "blue center aligned">Idea Bucket</h1>
+  <div class="ui stackable center aligned grid filter-search">
+    <%= render partial: 'filters' %>
+  </div>
 
-  <%= render partial: 'filters' %>
-
-  <div class="ui grid idea-container">
-    <div class="ui two wide column"></div>
+  <div class="ui stackable center aligned grid idea-container">
 
     <div class="ui inverted segment seven wide column" id="idea-form">
       <%= render partial: 'create_item_form' %>
     </div>
 
-    <div class="ui relaxed 2 wide column"></div>
 
     <div class="ui relaxed divided list seven wide column" id="ideas-list">
     </div>
