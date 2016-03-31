@@ -55,7 +55,6 @@ function sendEditAjax(idea, ideaParams, replaceTitle){
     url: "api/v1/ideas/" + idea.attr("data-id") + ".json",
     data: ideaParams,
     success: function(response){
-      debugger
       $('.modal').hide()
       idea.find('h4').html(replaceTitle)
       idea.find('.body').text(editBodyText)

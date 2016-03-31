@@ -9,7 +9,7 @@ $(document).ajaxSuccess(function(){
         qualities.qualityName
         return a > b
       });
-      fetchIdeas()
+      console.log($ideas)
     });
   }
 })
