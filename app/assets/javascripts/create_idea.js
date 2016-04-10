@@ -3,9 +3,13 @@ $(document).ready(function() {
 });
 
 var bodyText = function getIdeaBody(){
-  var input = $("#idea-body").val()
+  var input = $("#idea-body").val();
   var maxLength = 100;
   var words = input.split(' ');
+  truncateWords(words, maxLength);
+};
+
+function truncateWords(words){
   if (words.length > maxLength) {
     return words.slice(0, maxLength).join(' ');
   } else {
@@ -21,8 +25,8 @@ function saveIdea(){
         body: bodyText,
         quality: $("#idea-quality").val()
       }
-    }
-    sendNewAjax(ideaParams)
+    };
+    sendNewAjax(ideaParams);
   });
 }
 
@@ -35,19 +39,22 @@ function sendNewAjax(ideaParams){
       renderIdea(newIdea)
     },
     error: function(xhr) {
-      console.log("Something F'ed Up")
-      console.log(xhr.responseText)
+      console.log("Something F'ed Up");
+      console.log(xhr.responseText);
     }
   });
 
-  $("#idea-title").val("")
-  $("#idea-body").val("")
-  $("#idea-quality").val("")
+  resetValues();
 };
 
+function resetValues(){
+  $("#idea-title").val("");
+  $("#idea-body").val("");
+  $("#idea-quality").val("");
+}
 
 function renderIdea(idea){
-  var cappedQuality = idea.quality[0].toUpperCase() + idea.quality.slice(1)
+  var cappedQuality = idea.quality[0].toUpperCase() + idea.quality.slice(1);
 
   var newIdea = $("<div class='item'><div class='content' data-id='" +
   idea.id +
